@@ -1,10 +1,17 @@
 # Akka Components (application)
-In this folder you will need to implement 4 akka components:
 
-* `BookingSlotEntity` - The main entity of the application. It manages a timeslot by maintaining lists of bookings and participants available for booking.
-* `ParticipantSlotEntity` - A derived entity that stores the status of a participant within a given slot (e.g. `available` or `booked`).
-* `ParticipantSlotsView` - A view allowing queries of all slots for a given participant and slot
-* `SlotToParticipantConsumer` - A consumer that pulls events from the `BookingSlotEntity` and in turn sends commands to `ParticipantSlotEntity` to derive the participant-slot status.
-* `FlightConditionsAgent` - An AI agent responsible for checking and verifying flight conditions for the time of the booking.
+This package now contains the full implementation, not just the initial starter set.
 
-_Side note:_ the reference diagrams under [`images/`](../../../../../../images) in this repo were used as the main layout guide, which is why the solution adds extra components and behavior beyond this minimal starter list.
+Core components in this module:
+
+* `BookingSlotEntity` - Main slot aggregate (`available` + `bookings`) with idempotent mark/unmark/book/cancel behavior.
+* `ParticipantSlotEntity` - Per `slotId-participantId` state used for query-side projection.
+* `ParticipantSlotsView` - Query model for participant slots by `participantId` and status.
+* `SlotToParticipantConsumer` - Consumes `BookingSlotEntity` events and updates `ParticipantSlotEntity`.
+* `ReservationEntity` - Reservation aggregate per `bookingId` (request/accept/reject/confirm/cancel state machine).
+* `ReservationToTimeSlotConsumer` - Reacts to reservation events and coordinates slot verify/mark/cancel commands.
+* `BookingWorkflow` - Orchestration flow: reservation → evaluation → weather gate → slot booking/confirm or cancel.
+* `BookingReservationPollTimedAction` - Timer-based polling that resumes/fails the workflow based on reservation progress.
+* `FlightConditionsAgent` - Weather suitability check used by the workflow.
+
+Reference diagrams under [`images/`](../../../../../../images) were used as layout guidance.
