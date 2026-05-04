@@ -1,4 +1,4 @@
-# Flight Training Scheduler — implementation notes
+# Flight Training Scheduler ✈️ — implementation notes
 
 I mainly validated this against the diagrams and screenshots under [`images/`](images/) (flows, component map, ordering: mark availability → book → poll → cancel, idempotency). The official cert README covers the `/flight` contract and domain constraints; [`scripts/manual_api_flows.sh`](scripts/manual_api_flows.sh) is the repeatable check I run against a live service. No SSE for workflow progress—polling `GET` after `202` was enough for what we needed.
 
