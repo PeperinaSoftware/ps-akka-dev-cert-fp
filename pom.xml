@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.akka</groupId>
+    <artifactId>akka-javasdk-parent</artifactId>
+    <version>3.5.18</version>
+  </parent>
+
+  <groupId>io.example</groupId>
+  <artifactId>akka-dev-cert</artifactId>
+  <version>v.0.0.1</version>
+  <packaging>jar</packaging>
+
+  <name>akka-dev-cert-solution</name>
+
+  <properties>
+    <logback.configurationFile>logback.xml</logback.configurationFile>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>akka-secure</id>
+      <name>Akka Secure</name>
+      <url>https://repo.akka.io/YOUR_LICENSE_KEY/secure</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>akka-secure</id>
+      <name>Akka Secure</name>
+      <url>https://repo.akka.io/YOUR_LICENSE_KEY/secure</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>

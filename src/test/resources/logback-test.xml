@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%boldGreen(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight(%-5level) %gray([%15.15thread]) %cyan(%-40.40logger{40}) %gray(-) %msg%n%wEx</pattern>
+        </encoder>
+    </appender>
+
+    <include resource="include-dev-loggers.xml"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

@@ -1,0 +1,6 @@
+name: wing-plan
+service:
+  replication:
+    mode: replicated-read
+    replicatedRead:
+      primarySelectionMode: dynamic
